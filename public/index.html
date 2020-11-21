@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runtime Meet</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body onload="init('home')">
+  <header class="nav">
+    <h3>Home</h3>
+    <img id="header-img" class="avatar" />
+    <div id="options" hidden>
+      <h1 id="op-name"></h1>
+      <button id="logout">Sign Out</button>
+      <button id="join-btn">Join School</button>
+      <button id='create-btn'>Create School</button>
+      <a href="/account"><button>Manage account and</button></a>
+    </div>
+  </header>
+  <main>
+    <div id='school-r'></div>
+    <select id="s-grade">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+    <button id="join-meet">Load meetings</button>
+    <button id='create-meet'>create a session</button>
+    <div id="meetings"></div>
+  </main>
+  <div id="splash">
+    <h2>Loading</h2>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+  <script type="module" src="js/util/app.js"></script>
+</body>
+
+</html>

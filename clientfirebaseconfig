@@ -1,0 +1,20 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB_UcmOhNnPUUO00C4WDcIH12KaSdZiGD4",
+    authDomain: "rutime-meet.firebaseapp.com",
+    databaseURL: "https://rutime-meet.firebaseio.com",
+    projectId: "rutime-meet",
+    storageBucket: "rutime-meet.appspot.com",
+    messagingSenderId: "91012351292",
+    appId: "1:91012351292:web:0852cf72d77864b15aca39"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "rutime-meet",
+  "private_key_id": "5164b6652854d96c7ea9823e6809e940afb89afb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDPMd6tI9amzhyp\np1igVujUHBxrqTGeyttbYAReoAYqWofNqqNs1w0YumZYaGdEovr2JO09Ya1rNMB3\nSECxCyq8pRhnC92mqxYzPgFRe7SNo1pDl965/Z0BxNaaVCbPx/fxiRf43k0qnLgJ\ntvDAff1yfj/9ITGh/9IVEkTVgtIA5e5+o8KyXAlFoRpN9M+u/x58KKVjcG5wHs4w\norPczMpWiQEsQuOt9ldjVeEHiJMCYuyuwhvk/xgxy+GjwmHKoqxdh6U9GdinLY3t\n02+ZInKYzjM65+0eY35I+hs7VcZFw0L8M5aNBW2AcYdJ1gyLQCEu3u/Kfi5KDWwH\nl9Xy9R89AgMBAAECggEAIVk2gl71VU3GwUEP0RGL/K/gRy0pW79CL+KJcYLc2y5N\nE2ZL/YsI2ZpkOgXmholGTsiXbWduVoYGwGw0YAqbFgKV+z1RWgUe1/U6mGyKcrhV\ny/FYG6Qyrtk0GAzus5zM+ecF9mbZZsATbcTbL9sCKHkiQCd6lJzXVHrnR1z8rhYJ\nyXpoQcrka6X6BbyPS1fVLwxir/MZ1Nq1WHiAjGq9uMgyGyRryekuWiyRoRqthz/d\neJtGhzypefvMWjRoorqupFlkMdAUT4dcsVD4GIKZwbGeWZWcoYFU8J3orjIBF40g\nBCgcqQm9RVj4+QVOEAnW57Qna5zPLsTJJ4qXkzEB5QKBgQD3W2nyva8rGRmgdflW\nZpG4e1uJrLcgh1jygCVv1njXaLNmQv+VODlmZbBeIb7rP7jzRrgUzXFpjENhBEjm\nLjcC78mAv79WtlAxC5AMvdgCGXkuiKje1cPs2zoQOsKntrbYCppXpSZv+gE5sgy2\nZhqNqGVBJehFga0gHNqjKKd4xwKBgQDWbzVFtp19/332WhFGXlCqxNOBbRR3A6yj\nN/jT+cHs+Grz376i5pUoX2epcfF1Kz0X0guV89tb206i7GO5ridVvVALSP+G/YRU\nbgWUHp76mS+YGDfufPcB5tVDZLFkbr+8yfjQeA+ict0aNxEbUPSDadxG6ezhCO7f\nQXFpLL3L2wKBgQC0785hPLVcnkCrqoBX3jFrs/hyjb9q8PZ0dJ5t34GHeFP6Urno\nKjd6mpnXUXH5XSRp9+oBdYInRe2nkt3MWjPtVv+byScqQ7QHHEEjwN64Mm/9RQPZ\n9J4brQUdCA6JZdL7102tHOYv9L1eucooxilYQ7zFWfg8l63PFqwruzo90wKBgAd2\nnWsMvRSKlO7DGcDSPYqECTyC+GhgB10y8IUoNzixOL++NNtknSJnl6sNHTNPyvOO\nSvrwHt1ml6kSAzKOPi48xZFu+/3NyxJJNgZ+vlfIhyCLDz9MuCgnyZpr4cS2GhRP\nD0rqMtkbmFh2PDEwMyJzx8fsEmOOtQmuNG1NsllrAoGBAMAU7T2pEwAAjfU/fEbn\nnruKp/Jk7oxLWwrYCPjhBU73kAEOfpHiRvgPY9ctK4Se86CTo7ZCkPJb0bgVHYXe\nEZ89DxNUGCKHdKMMFJArDgHZkhcVMk58F6VOSa3PRzet4+jM9htPsoERgFqZ+AYN\nJg09RtwRhsNszq2y1gTDX4WE\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-vaqkw@rutime-meet.iam.gserviceaccount.com",
+  "client_id": "116347235907335787911",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-vaqkw%40rutime-meet.iam.gserviceaccount.com"
+}

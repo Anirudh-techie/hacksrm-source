@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Login</title>
+   <link rel="stylesheet" href="../css/login.css">
+   <link rel="stylesheet" href="../css/styles.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body onload="init('login')">
+   <div id="splash">
+      <h2>Loading</h2>
+   </div>
+   <div class="login-page">
+      <div class="form">
+
+         <form class="login-form" id='login-form'>
+            <input type="text" placeholder="username" id="username" />
+            <input type="password" placeholder="password" id='pwd' />
+            <button>login</button>
+            <p class="message">Not registered? <a href="/register">Create an account</a></p>
+         </form>
+      </div>
+   </div>
+   <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+   <script type="module" src="js/util/app.js"></script>
+</body>
+
+</html>
