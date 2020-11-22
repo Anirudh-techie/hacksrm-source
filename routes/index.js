@@ -13,4 +13,6 @@ router.post("/getschools", school.getschools);
 router.post("/newmeeting", meet.newMeeting);
 router.post("/getmeeting", meet.getMeeting);
 router.post("/allmeetings", meet.getAllMeetings);
+router.get("/getuser", users.getuser);
+router.get("/gettoken", users.token);
 module.exports = router;

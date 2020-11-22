@@ -31,7 +31,7 @@ server.on("listening", onListening);
 
 module.exports.server = server;
 
-require("../config/meeting");
+//require("../config/meeting");
 /**
  * Normalize a port into a number, string, or false.
  */

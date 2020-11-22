@@ -1,10 +1,6 @@
 const firebase = require("firebase-admin");
 const path = require("path");
 
-const WebSocket = require("ws");
-// based on examples at https://www.npmjs.com/package/ws
-const WebSocketServer = WebSocket.Server;
-
 module.exports.getAllMeetings = async (req, res) => {
   var response = [];
   var schoolid = req.body.id;
@@ -57,26 +53,6 @@ module.exports.newMeeting = async (req, res) => {
   });
   id = id.id;
   res.json({ id });
-  var server = require("../bin/www").server;
-  // Create a server for handling websocket calls
-  const wss = new WebSocketServer({ server, path: "/websocket/" + id });
-
-  wss.on("connection", function (ws) {
-    ws.on("message", function (message) {
-      // Broadcast any received message to all clients
-      wss.broadcast(message);
-    });
-
-    ws.on("error", () => ws.terminate());
-  });
-
-  wss.broadcast = function (data) {
-    this.clients.forEach(function (client) {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(data);
-      }
-    });
-  };
 };
 
 module.exports.getMeeting = async (req, res) => {
