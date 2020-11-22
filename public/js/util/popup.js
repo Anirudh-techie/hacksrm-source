@@ -54,7 +54,7 @@ export var joinschool = () => {
     var id = document.getElementById("join-id").value;
     var role = document.getElementById("join-role").value;
     school.joinSchool(id, role);
-    alert("Your schools id: " + id);
+    
   };
   document.body.append(div);
 };

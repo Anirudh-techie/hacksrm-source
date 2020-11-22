@@ -43,5 +43,6 @@ export var createSchool = async (name, role) => {
     })
   ).json();
   id = id.id;
+  alert("Your schools id: " + id);
   joinSchool(id, role);
 };
