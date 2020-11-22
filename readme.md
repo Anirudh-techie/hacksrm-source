@@ -15,3 +15,5 @@ We are gonna create a super cool project that would really help the teachers, as
 We are also planning to make more features. All are on the way.
 
 ##How to start the server
+
+run npm install and npm start and check localhost:3000
