@@ -24,7 +24,9 @@ export var createschool = () => {
     e.preventDefault();
     var name = document.getElementById("create-name").value;
     var role = document.getElementById("create-role").value;
-    school.createSchool(name, role);
+    school.createSchool(name, role).then(() => {
+      location.href = "/";
+    });
   };
   document.body.append(div);
 };
@@ -53,8 +55,9 @@ export var joinschool = () => {
     e.preventDefault();
     var id = document.getElementById("join-id").value;
     var role = document.getElementById("join-role").value;
-    school.joinSchool(id, role);
-    
+    school.joinSchool(id, role).then(() => {
+      location.href = "/";
+    });
   };
   document.body.append(div);
 };
