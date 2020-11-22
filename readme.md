@@ -13,3 +13,5 @@ We are gonna create a super cool project that would really help the teachers, as
 5. The joining of the meeting becomes so simpler that the student just have to select his grade
 
 We are also planning to make more features. All are on the way.
+
+##How to start the server
