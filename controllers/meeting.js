@@ -48,7 +48,7 @@ module.exports.newMeeting = async (req, res) => {
   var id = await firebase.firestore().collection("meetings").add({
     name: req.body.name,
     schoolid: req.body.schoolid,
-    grade: req.body.grade,
+    class: req.body["class"],
     resources: [],
   });
   id = id.id;

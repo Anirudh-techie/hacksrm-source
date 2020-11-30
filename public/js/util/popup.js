@@ -1,4 +1,5 @@
 import * as school from "./school.js";
+import * as button from "./button.js";
 
 export var createschool = () => {
   var div = document.createElement("div");
@@ -29,6 +30,7 @@ export var createschool = () => {
     });
   };
   document.body.append(div);
+  button.init();
 };
 
 export var joinschool = () => {
@@ -60,4 +62,5 @@ export var joinschool = () => {
     });
   };
   document.body.append(div);
+  button.init();
 };
