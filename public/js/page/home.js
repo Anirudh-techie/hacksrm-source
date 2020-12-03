@@ -5,6 +5,9 @@ import * as button from "../util/button.js";
 import { forEach } from "../util/forEach.js";
 export var init = async () => {
   var schools = await school.getSchools();
+  if (school.length <= 0) {
+    location.href = "/pages/joinschool.html";
+  }
   document.getElementById("header-img").onclick = function () {
     var e = document.getElementById("options");
     e.hidden = !e.hidden;
@@ -70,6 +73,7 @@ export var init = async () => {
             <span class="mdc-list-item__text">Create A Session</span>
         </li>`;
         document.getElementById("create-meet").onclick = createMeet;
+        document.getElementById("m-create-class").onclick = createClass;
       }
       document.getElementById("s-grade").innerHTML = `
         ${forEach(
@@ -117,7 +121,6 @@ export var init = async () => {
     });
   }
   button.init();
-  document.getElementById("c-class").onclick = createClass;
   document.getElementById("join-meet").onclick = () => {
     var _class_ = document.getElementById("s-grade").value;
     var all = document.getElementsByClassName("s-label");
@@ -148,6 +151,7 @@ export var init = async () => {
   };
 };
 function createClass() {
+  console.log("hello hi");
   var all = document.getElementsByClassName("s-label");
   var schoolid;
   for (var i = 0; i < all.length; i++) {
@@ -188,7 +192,7 @@ function createMeet() {
     return;
   }
   var create_dialog = new mdc.dialog.MDCDialog(
-    document.getElementById("s-create-dlg")
+    document.getElementById("m-create-dlg")
   );
   create_dialog.open();
   document.getElementById("m-class").innerHTML = document.getElementById(
