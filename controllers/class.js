@@ -1,34 +1,15 @@
 var firebase = require("firebase-admin");
 
-module.exports.newclass = (req, res) => {
-  firebase
-    .firestore()
-    .collection("schools")
-    .doc(req.body.schoolid)
-    .collection("classes")
-    .add({ name: req.body.name });
-  res.json();
-};
-
-module.exports.getallclasses = (req, res) => {
-  firebase
-    .firestore()
-    .collection("schools")
-    .doc(req.query.schoolid)
-    .collection("classes")
-    .get()
-    .then((d) => {
-      res.write("[");
-      d.docs.forEach((v) => {
-        var h = {
-          id: v.id,
-          ...v.data(),
-        };
-        res.write(JSON.stringify(h));
-      });
-      res.write("]");
-      res.end();
-    });
+module.exports.newclass = async (req, res) => {
+  var id = (
+    await firebase
+      .firestore()
+      .collection("schools")
+      .doc(req.body.schoolid)
+      .collection("classes")
+      .add({ name: req.body.name })
+  ).id;
+  res.json({ id });
 };
 
 module.exports.joinclass = (req, res) => {

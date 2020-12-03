@@ -37,6 +37,22 @@ module.exports.getschools = async (req, res) => {
     var schoolref = firebase.firestore().collection("schools").doc(v.id);
     var k = await schoolref.get();
     var d = k.data();
+    var _allclasses_ = [];
+    firebase
+      .firestore()
+      .collection("schools")
+      .doc(v.id)
+      .collection("classes")
+      .get()
+      .then((d) => {
+        d.docs.forEach((g) => {
+          var h = {
+            id: g.id,
+            ...g.data(),
+          };
+          _allclasses_.push(h);
+        });
+      });
     var classes = await myschoolsref.doc(v.id).collection("classes").get();
     var _classes_ = [];
     for (var c of classes.docs) {
@@ -53,7 +69,13 @@ module.exports.getschools = async (req, res) => {
       });
       _classes_.push(c_data);
     }
-    var r = { id: v.id, ...v.data(), ...d, classes: _classes_ };
+    var r = {
+      id: v.id,
+      ...v.data(),
+      ...d,
+      classes: _classes_,
+      allclasses: _allclasses_,
+    };
     response.push(r);
   }
   res.json(response);

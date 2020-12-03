@@ -5,17 +5,32 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Runtime Meet</title>
-   <link rel="stylesheet" href="/css/styles.css">
-   <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
-   <script src="//media.twiliocdn.com/sdk/js/video/releases/2.8.0/twilio-video.min.js"></script>
    <link rel="stylesheet" href="/css/meet.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+   <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+   <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body onload="init('meet')">
    <div id="splash">
-      <div class="loader">Loading...</div>
+      <div role="progressbar"
+         class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--animation-ready"
+         aria-label="Example Progress Bar" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"
+         style="width: 400px; position: absolute; top:40%">
+         <div class="mdc-linear-progress__buffer">
+            <div class="mdc-linear-progress__buffer-bar"></div>
+            <div class="mdc-linear-progress__buffer-dots"></div>
+         </div>
+         <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+            <span class="mdc-linear-progress__bar-inner"></span>
+         </div>
+         <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+            <span class="mdc-linear-progress__bar-inner"></span>
+         </div>
+      </div>
       <h2>Loading</h2>
    </div>
    <div id="main">
@@ -24,6 +39,7 @@
 
    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+
    <script type="module" src="/js/util/app.js"></script>
 </body>
 

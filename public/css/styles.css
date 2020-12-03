@@ -10,12 +10,7 @@
   display: grid;
   place-items: center;
   color: #2f2f2f;
-  background: radial-gradient(50% 123.47% at 50% 50%, #00ff94 0%, #720059 100%),
-    linear-gradient(121.28deg, #669600 0%, #ff0000 100%),
-    linear-gradient(360deg, #0029ff 0%, #8fff00 100%),
-    radial-gradient(100% 164.72% at 100% 100%, #6100ff 0%, #00ff57 100%),
-    radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #51d500 100%);
-  background-blend-mode: screen, color-dodge, overlay, difference, normal;
+  background: linear-gradient(60deg, #5b019b, #202020);
 }
 html,
 body {
@@ -44,6 +39,24 @@ body {
 }
 .mdc-fab {
   background-color: #fff !important;
+}
+.class-icon {
+  float: right;
+}
+.join-class {
+  width: 50px;
+  height: 50px;
+}
+.join-class > span {
+  font-size: 32px !important;
+}
+.class-toggle {
+  cursor: pointer;
+  padding: 8px;
+  user-select: none;
+}
+.class-sub {
+  padding: 1px 1px 1px 10px;
 }
 #header-img {
   z-index: 999999999;

@@ -29,7 +29,6 @@
           <button id="logout">Sign Out</button>
           <button id="join-btn">Join School</button>
           <button id='create-btn'>Create School</button>
-          <button id='join-class'>Join Class</button>
         </div>
       </section>
     </div>
@@ -49,25 +48,119 @@
       <h2>Search Meetings</h2>
 
       <select id="s-grade">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
+
       </select>
       <button id="join-meet">Load meetings</button>
       <div id="meetings"></div>
     </div>
+    <div class="mdc-dialog" id="s-create-dlg">
+      <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
+          aria-describedby="my-dialog-content">
+          <h2 class="mdc-dialog__title" id="my-dialog-title">Enter Details</h2>
+          <div class="mdc-dialog__content" id="my-dialog-content">
+            <form id="m-create">
+              <label class="mdc-text-field mdc-text-field--outlined">
+                <span class="mdc-notched-outline">
+                  <span class="mdc-notched-outline__leading"></span>
+                  <span class="mdc-notched-outline__notch">
+                    <span class="mdc-floating-label" id="my-label-id">Meet Name</span>
+                  </span>
+                  <span class="mdc-notched-outline__trailing"></span>
+                </span>
+                <input type="text" class="mdc-text-field__input" id="m-name" aria-labelledby="my-label-id">
+              </label>
+              <select id="m-class"></select>
+              <button>Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-dialog__scrim"></div>
+    </div>
+    <div class="mdc-dialog" id="s-create-dlg">
+      <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
+          aria-describedby="my-dialog-content">
+          <h2 class="mdc-dialog__title" id="my-dialog-title">Enter Details</h2>
+          <div class="mdc-dialog__content" id="my-dialog-content">
+            <form id="s-create">
+              <label class="mdc-text-field mdc-text-field--outlined">
+                <span class="mdc-notched-outline">
+                  <span class="mdc-notched-outline__leading"></span>
+                  <span class="mdc-notched-outline__notch">
+                    <span class="mdc-floating-label" id="my-label-id">School Name</span>
+                  </span>
+                  <span class="mdc-notched-outline__trailing"></span>
+                </span>
+                <input type="text" class="mdc-text-field__input" id="create-name" aria-labelledby="my-label-id">
+              </label>
+              <button>Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-dialog__scrim"></div>
+    </div>
+    <div class="mdc-dialog" id="s-join-dlg">
+      <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
+          aria-describedby="my-dialog-content">
+          <h2 class="mdc-dialog__title" id="my-dialog-title">Enter Details</h2>
+          <div class="mdc-dialog__content" id="my-dialog-content">
+            <form id="s-join">
+              <label class="mdc-text-field mdc-text-field--outlined">
+                <span class="mdc-notched-outline">
+                  <span class="mdc-notched-outline__leading"></span>
+                  <span class="mdc-notched-outline__notch">
+                    <span class="mdc-floating-label" id="my-label-id">School ID</span>
+                  </span>
+                  <span class="mdc-notched-outline__trailing"></span>
+                </span>
+                <input type="text" class="mdc-text-field__input" id="join-id" aria-labelledby="my-label-id">
+              </label>
+              <button>Join</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-dialog__scrim"></div>
+    </div>
+    <div id="demo-menu" class="mdc-menu-surface--anchor" style="position: absolute; right: 30px; bottom: 30px;">
+      <div class="mdc-menu mdc-menu-surface">
+        <ul class="mdc-list" id="menu-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+          <li class="mdc-list-item" role="menuitem">
+            <span class="mdc-list-item__ripple"></span>
+            <span class="mdc-list-item__text">Join Class</span>
+          </li>
+          <li class="mdc-list-item" id="c-class" role="menuitem">
+            <span class="mdc-list-item__ripple"></span>
+            <span class="mdc-list-item__text">Create Class</span>
+          </li>
+        </ul>
+      </div>
+      <button id='join-class' class="mdc-fab no-mdc join-class" aria-label="add">
+        <div class="mdc-fab__ripple"></div>
+        <span class="mdc-fab__icon material-icons">add</span>
+      </button>
+    </div>
   </main>
   <div id="splash">
-    <div class="loader">Loading...</div>
+    <div role="progressbar"
+      class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--animation-ready"
+      aria-label="Example Progress Bar" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"
+      style="width: 400px; position: absolute; top:40%">
+      <div class="mdc-linear-progress__buffer">
+        <div class="mdc-linear-progress__buffer-bar"></div>
+        <div class="mdc-linear-progress__buffer-dots"></div>
+      </div>
+      <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+        <span class="mdc-linear-progress__bar-inner"></span>
+      </div>
+      <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+        <span class="mdc-linear-progress__bar-inner"></span>
+      </div>
+    </div>
     <h2>Loading</h2>
   </div>
   <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>

@@ -3,17 +3,15 @@ const path = require("path");
 
 module.exports.getAllMeetings = async (req, res) => {
   var response = [];
-  var schoolid = req.body.id;
-  var grade = req.body.grade;
+  var id = req.body["class"];
   var meetings = await firebase
     .firestore()
     .collection("meetings")
-    .where("schoolid", "==", schoolid)
-    .where("grade", "==", grade)
+    .where("class", "==", id)
     .get();
   meetings.forEach((v) => {
     var data = v.data();
-    var obj = { id: v.id, name: data.name, grade: data.grade };
+    var obj = { id: v.id, ...data };
     response.push(obj);
   });
   res.json(response);
@@ -45,14 +43,65 @@ module.exports.uploadFile = async (req, res) => {
 };
 
 module.exports.newMeeting = async (req, res) => {
-  var id = await firebase.firestore().collection("meetings").add({
-    name: req.body.name,
-    schoolid: req.body.schoolid,
-    class: req.body["class"],
-    resources: [],
+  var http = require("https");
+
+  var options = {
+    method: "POST",
+    hostname: "api.zoom.us",
+    port: null,
+    path: "/v2/users/RRYqidJ7SiCa7iY1Dq-wig/meetings",
+    headers: {
+      "content-type": "application/json",
+      authorization:
+        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6ImJuLUlvUnlDUkt5aTBjSWFXQjFoeWciLCJleHAiOjE2MDc1MjkyMDYsImlhdCI6MTYwNjkyNDQwNn0.Hj_pvA3sotZYTouSDunx2FYienas2835wQTI6Tvh8r8",
+    },
+  };
+
+  var request = http.request(options, function (response) {
+    var chunks = [];
+
+    response.on("data", function (chunk) {
+      chunks.push(chunk);
+    });
+
+    response.on("end", async function () {
+      var body = Buffer.concat(chunks);
+      body = body.toString();
+      body = JSON.parse(body);
+      await firebase
+        .firestore()
+        .collection("meetings")
+        .doc(body.id.toString())
+        .set({
+          name: req.body.name,
+          schoolid: req.body.schoolid,
+          class: req.body["class"],
+          resources: [],
+        });
+      res.json({ id: body.id });
+    });
   });
-  id = id.id;
-  res.json({ id });
+
+  request.write(
+    JSON.stringify({
+      topic: req.body.name,
+      type: 3,
+      password: "password",
+      agenda: req.body.name + "for" + req.body.class,
+      settings: {
+        host_video: true,
+        participant_video: true,
+        in_meeting: true,
+        mute_upon_entry: false,
+        watermark: false,
+        use_pmi: false,
+        approval_type: 0,
+        audio: "both",
+        auto_recording: "none",
+      },
+    })
+  );
+  request.end();
 };
 
 module.exports.getMeeting = async (req, res) => {
@@ -62,11 +111,9 @@ module.exports.getMeeting = async (req, res) => {
     .doc(req.body.id)
     .get();
   var d = m.data();
-  var { name, grade } = d;
   var id = m.id;
   res.json({
-    name,
     id,
-    grade,
+    ...d,
   });
 };

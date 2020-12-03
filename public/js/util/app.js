@@ -16,7 +16,6 @@ window.init = async (page) => {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   await auth.init();
-  document.getElementById("splash").style.display = "none";
   if (auth.signed_in && page == "home") {
     document.getElementById("header-img").src =
       auth.user.photoURL || "https://i.stack.imgur.com/IHLNO.jpg";
@@ -25,7 +24,7 @@ window.init = async (page) => {
     if (!auth.signed_in) {
       location.href = "/login";
     }
-    home.init();
+    await home.init();
   }
   if (page == "account") {
     if (!auth.signed_in) {
@@ -52,4 +51,6 @@ window.init = async (page) => {
     }
     register.init();
   }
+
+  document.getElementById("splash").style.display = "none";
 };

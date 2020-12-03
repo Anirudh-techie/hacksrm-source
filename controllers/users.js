@@ -12,29 +12,41 @@ module.exports.adduser = (req, res) => {
       res.json({});
     });
 };
+const crypto = require("crypto"); // crypto comes with Node.js
 
-module.exports.token = (req, res) => {
-  var id = req.query.id;
+function generateSignature(apiKey, apiSecret, meetingNumber, role) {
+  // Prevent time sync issue between client signature generation and zoom
+  const timestamp = new Date().getTime() - 30000;
+  const msg = Buffer.from(apiKey + meetingNumber + timestamp + role).toString(
+    "base64"
+  );
+  const hash = crypto
+    .createHmac("sha256", apiSecret)
+    .update(msg)
+    .digest("base64");
+  const signature = Buffer.from(
+    `${apiKey}.${meetingNumber}.${timestamp}.${role}.${hash}`
+  ).toString("base64");
 
-  // Substitute your Twilio AccountSid and ApiKey details
-  var ACCOUNT_SID = "ACbd6943bf61b04890cb91077daea56da9";
-  var API_KEY_SID = "SK3da64798018f611224f9a7f4f31e7323";
-  var API_KEY_SECRET = "NmT930NRrsqKykJv8XCe8sKs5L6cuspY";
+  return signature;
+}
 
-  // Create an Access Token
-  var accessToken = new AccessToken(ACCOUNT_SID, API_KEY_SID, API_KEY_SECRET);
-
-  // Set the Identity of this token
-  accessToken.identity = id;
-
-  // Grant access to Video
-  var grant = new VideoGrant();
-  grant.room = "";
-  accessToken.addGrant(grant);
-
-  // Serialize the token as a JWT
-  var jwt = accessToken.toJwt();
-  res.json({ id: jwt });
+module.exports.token = async (req, res) => {
+  var meetid = req.query.meetid;
+  const API_KEY = "bn-IoRyCRKyi0cIaWB1hyg";
+  const API_SECRET = "thgd5GsdTMIVtJO8jNYvlkwiNzWR84Elf8T6";
+  var role = (
+    await firebase
+      .firestore()
+      .collection("users")
+      .doc(req.query.user)
+      .collection("schools")
+      .doc(req.query.school)
+      .get()
+  ).data().role;
+  role = role == "teacher" ? 1 : 0;
+  var id = generateSignature(API_KEY, API_SECRET, meetid, role);
+  res.json({ id });
 };
 
 module.exports.getuser = async (req, res) => {
