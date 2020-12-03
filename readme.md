@@ -14,6 +14,31 @@ We are gonna create a super cool project that would really help the teachers, as
 
 We are also planning to make more features. All are on the way.
 
-##How to start the server
+## Starting the server
 
-run npm install and npm start and check localhost:3000
+**1. Clone the repo**
+```javascript
+gh repo clone Anirudh-techie/hacksrm-source
+```
+
+**3. Entering project directory**
+```javascript
+cd hacksrm-source/
+```
+
+**3. Installing Dependencies**
+```javascript
+npm install
+```
+
+**4. Starting server**
+```javascript
+npm start
+```
+
+**4. Production Build For Deployment**
+```javascript
+npm run build
+```
+
+
