@@ -75,6 +75,9 @@ export var init = async () => {
         document.getElementById("create-meet").onclick = createMeet;
         document.getElementById("m-create-class").onclick = createClass;
       }
+      document.getElementById("m-join-class").onclick = function () {
+        joinClass(s[0]);
+      };
       document.getElementById("s-grade").innerHTML = `
         ${forEach(
           s[0].allclasses,
@@ -224,5 +227,50 @@ function createMeet() {
       .then((id) => {
         location.href = "/meet/" + id.id;
       });
+  };
+}
+
+function joinClass(data) {
+  var join_class = new mdc.dialog.MDCDialog(
+    document.getElementById("c-join-dlg")
+  );
+  join_class.open();
+  console.log(data);
+  var cls = data.allclasses.filter((v) => {
+    return !data.classes.find((e) => e.name == v.name);
+  });
+  if (cls.length <= 0) {
+    document.getElementById("c-error").innerHTML =
+      "Already joined all classes.";
+    document
+      .getElementById("c-join")
+      .getElementsByTagName("button")[0].disabled = true;
+  } else {
+    document.getElementById("c-error").innerHTML = "";
+    document
+      .getElementById("c-join")
+      .getElementsByTagName("button")[0].disabled = false;
+  }
+  document.getElementById("c-grade").innerHTML = `${forEach(
+    cls,
+    (c) => `<option value="${c.id}">${c.name}</option>`
+  )}`;
+
+  document.getElementById("c-join").onsubmit = function (e) {
+    e.preventDefault();
+    var c = document.getElementById("c-grade").value;
+    fetch("/joinclass", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        classid: c,
+        userid: auth.user.uid,
+        schoolid: data.id,
+      }),
+    }).then(() => {
+      location.reload();
+    });
   };
 }

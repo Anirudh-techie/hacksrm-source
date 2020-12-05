@@ -57,8 +57,8 @@
       <div class="mdc-dialog__container">
         <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
           aria-describedby="my-dialog-content">
-          <h2 class="mdc-dialog__title" id="my-dialog-title">Enter Details</h2>
-          <div class="mdc-dialog__content" id="my-dialog-content">
+          <h2 class="mdc-dialog__title">Enter Details</h2>
+          <div class="mdc-dialog__content">
             <form id="m-create">
               <label class="mdc-text-field mdc-text-field--outlined">
                 <span class="mdc-notched-outline">
@@ -82,8 +82,8 @@
       <div class="mdc-dialog__container">
         <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
           aria-describedby="my-dialog-content">
-          <h2 class="mdc-dialog__title" id="my-dialog-title">Enter Details</h2>
-          <div class="mdc-dialog__content" id="my-dialog-content">
+          <h2 class="mdc-dialog__title">Enter Details</h2>
+          <div class="mdc-dialog__content">
             <form id="s-create">
               <label class="mdc-text-field mdc-text-field--outlined">
                 <span class="mdc-notched-outline">
@@ -106,8 +106,8 @@
       <div class="mdc-dialog__container">
         <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
           aria-describedby="my-dialog-content">
-          <h2 class="mdc-dialog__title" id="my-dialog-title">Enter Details</h2>
-          <div class="mdc-dialog__content" id="my-dialog-content">
+          <h2 class="mdc-dialog__title">Enter Details</h2>
+          <div class="mdc-dialog__content">
             <form id="s-join">
               <label class="mdc-text-field mdc-text-field--outlined">
                 <span class="mdc-notched-outline">
@@ -126,10 +126,27 @@
       </div>
       <div class="mdc-dialog__scrim"></div>
     </div>
+
+    <div class="mdc-dialog" id="c-join-dlg">
+      <div class="mdc-dialog__container">
+        <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
+          aria-describedby="my-dialog-content">
+          <h2 class="mdc-dialog__title">Enter Details</h2>
+          <div class="mdc-dialog__content">
+            <form id="c-join">
+              <select id="c-grade"></select>
+              <h1 id='c-error'></h1>
+              <button>Join</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="mdc-dialog__scrim"></div>
+    </div>
     <div id="demo-menu" class="mdc-menu-surface--anchor" style="position: absolute; right: 30px; bottom: 30px;">
       <div class="mdc-menu mdc-menu-surface">
         <ul class="mdc-list" id="menu-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
-          <li class="mdc-list-item" role="menuitem">
+          <li class="mdc-list-item" id="m-join-class" role="menuitem">
             <span class="mdc-list-item__ripple"></span>
             <span class="mdc-list-item__text">Join Class</span>
           </li>

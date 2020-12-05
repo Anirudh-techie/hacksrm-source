@@ -3,6 +3,7 @@ import * as login from "../page/login.js";
 import * as register from "../page/register.js";
 import * as home from "../page/home.js";
 import * as meet from "../page/meeting.js";
+import * as account from "../page/account.js";
 window.init = async (page) => {
   var firebaseConfig = {
     apiKey: " AIzaSyB_UcmOhNnPUUO00C4WDcIH12KaSdZiGD4",
@@ -30,7 +31,7 @@ window.init = async (page) => {
     if (!auth.signed_in) {
       location.href = "/login";
     }
-    //init account
+    await account.init();
   }
   if (page == "meet") {
     if (!auth.signed_in) {
