@@ -23,11 +23,68 @@ body {
 }
 #searchmeet {
   float: left;
-  width: 50%;
+  width: 44%;
+  box-shadow: 0px 0px 5px 0px #444;
+  padding-top: 0;
+  height: 100%;
+  margin-left: 1%;
+  overflow: hidden;
+}
+#searchmeet > h3 {
+  background: #6200ee;
+  padding: 12px;
+  padding-left: 25px;
+}
+#searchmeet #s_filter {
+  float: left;
+  width: 30%;
+  overflow: hidden;
+  padding: 25px;
+  height: 100%;
+  background: #e1e1e1;
+}
+#searchmeet #meetings {
+  padding: 2.5%;
+  height: 100%;
+  overflow: auto;
+  position: relative;
 }
 #mymeet {
   float: left;
-  width: 50%;
+  width: 44%;
+  margin-right: 1%;
+  padding-top: 0;
+  box-shadow: 0px 0px 5px 0px #444;
+  height: 100%;
+}
+#mymeet > h3 {
+  background: #6200ee;
+  padding: 12px;
+  padding-left: 25px;
+}
+#mymeet #mymeet-div {
+  padding: 2.5%;
+  height: 100%;
+}
+.class-toggle i {
+  transition: all ease-in 0.2s;
+}
+.class-sub {
+  transition: all ease-in 0.1s;
+  overflow: hidden;
+  box-shadow: 0px 0px 1px 0px #222;
+  background: #f1f1f1;
+}
+.class-toggle {
+  box-shadow: 0px 0px 1px 0px #222;
+  transition: all ease-in 0.15s;
+}
+.class-toggle:hover {
+  box-shadow: 0px 0px 2px 0px #222;
+  background: #f5f5f5;
+}
+.class-link {
+  padding: 16px;
 }
 #splash h2 {
   position: absolute;
@@ -56,8 +113,9 @@ body {
   user-select: none;
 }
 .class-sub {
-  padding: 1px 1px 1px 10px;
+  padding: 0px 0px 0px 10px;
 }
+
 #header-img {
   z-index: 999999999;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 5px 16px 0px !important;

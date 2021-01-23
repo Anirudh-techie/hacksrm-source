@@ -34,23 +34,16 @@
     </div>
   </header>
   <main class="main">
-    <!--<div>
-      Join and create school by clicking your profile img in top-right side<br>
-      Select a school and grade and click load meetings to load all meetings of that grade.
-      <br>Create a session by clicking a school and click create session.
-    </div>-->
-
     <div id='mymeet'>
-      <h2>My Meetings</h2>
+      <h3>My Meetings</h3>
       <div id='mymeet-div'></div>
     </div>
     <div id='searchmeet'>
-      <h2>Search Meetings</h2>
-
-      <select id="s-grade">
-
-      </select>
-      <button id="join-meet">Load meetings</button>
+      <h3>Global Meetings In The School</h3>
+      <div id="s_filter">
+        <h3 style="border-bottom: 2px solid #6200ee; margin-bottom: 12px;">Filter</h3>
+        <h5>Class: <select id="s-grade"></select></h5>
+      </div>
       <div id="meetings"></div>
     </div>
     <div class="mdc-dialog" id="m-create-dlg">

@@ -18,3 +18,19 @@
 .footer button:hover {
   background-color: #5f00acab !important;
 }
+#m_join_cont {
+  font-size: 80px;
+  color: #222;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+}
+
+#m_join_cont #join-meet{
+  width: 15%;
+  height: 50px;
+
+}

@@ -1,14 +1,24 @@
 const firebase = require("firebase-admin");
+var jwtGenerator = require("jsonwebtoken");
 const path = require("path");
 
 module.exports.getAllMeetings = async (req, res) => {
   var response = [];
-  var id = req.body["class"];
-  var meetings = await firebase
-    .firestore()
-    .collection("meetings")
-    .where("class", "==", id)
-    .get();
+  var id = req.body.class;
+  if(id.includes("all:::")){
+var meetings = await firebase
+  .firestore()
+  .collection("meetings")
+  .where("schoolid", "==", id.substring(6,id.length))
+  .get();
+  }else{
+var meetings = await firebase
+  .firestore()
+  .collection("meetings")
+  .where("class", "==", id)
+  .get();
+  }
+  
   meetings.forEach((v) => {
     var data = v.data();
     var obj = { id: v.id, ...data };
@@ -44,7 +54,17 @@ module.exports.uploadFile = async (req, res) => {
 
 module.exports.newMeeting = async (req, res) => {
   var http = require("https");
-
+var expiry = new Date();
+expiry.setHours(expiry.getHours() + 1);
+var jwt = jwtGenerator.sign(
+  {
+    aud: null,
+    iss: "bn-IoRyCRKyi0cIaWB1hyg",
+    exp: parseInt(expiry.getTime() / 1000),
+    iat: parseInt(new Date().getTime() / 1000),
+  },
+  "thgd5GsdTMIVtJO8jNYvlkwiNzWR84Elf8T6"
+);
   var options = {
     method: "POST",
     hostname: "api.zoom.us",
@@ -53,7 +73,7 @@ module.exports.newMeeting = async (req, res) => {
     headers: {
       "content-type": "application/json",
       authorization:
-        "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOm51bGwsImlzcyI6ImJuLUlvUnlDUkt5aTBjSWFXQjFoeWciLCJleHAiOjE2MDc1MjkyMDYsImlhdCI6MTYwNjkyNDQwNn0.Hj_pvA3sotZYTouSDunx2FYienas2835wQTI6Tvh8r8",
+        "Bearer "+jwt,
     },
   };
 

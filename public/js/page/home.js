@@ -5,8 +5,8 @@ import * as button from "../util/button.js";
 import { forEach } from "../util/forEach.js";
 export var init = async () => {
   var schools = await school.getSchools();
-  if (school.length <= 0) {
-    location.href = "/pages/joinschool.html";
+  if (schools.length <= 0) {
+    alert("please create a school!");
   }
   document.getElementById("header-img").onclick = function () {
     var e = document.getElementById("options");
@@ -51,7 +51,6 @@ export var init = async () => {
   for (let j = 0; items.length > j; j++) {
     var i = items.item(j);
     i.onclick = (e) => {
-      console.log("hi");
       for (let k = 0; items.length > k; k++) {
         var a = items.item(k);
         a.removeAttribute("selected");
@@ -79,6 +78,7 @@ export var init = async () => {
         joinClass(s[0]);
       };
       document.getElementById("s-grade").innerHTML = `
+      <option value='all:::${s[0].id}'>All Classes</option>
         ${forEach(
           s[0].allclasses,
           (q) => `
@@ -87,6 +87,7 @@ export var init = async () => {
         )}
       `;
       showMeetings(s[0]);
+      document.getElementById("s-grade").dispatchEvent(new Event("change"));
       button.init();
     };
   }
@@ -104,11 +105,19 @@ export var init = async () => {
             ${d.name}
             <i class='class-icon material-icons'>keyboard_arrow_down</i>
           </h3>
-          <div class='class-sub' hidden>
+          <div class='class-sub open'>
             ${forEach(
               d.meetings,
               (m) => `
-              <a class='class-link' href='/meet/${m.id}'>${m.name}</a><br>
+              <div class="mdc-card" style="padding:16px; margin: 5px;">
+                <div class="mdc-card__content">
+                  <h4>${m.name}</h4>
+                </div>
+                <div class="mdc-card__action-button" tabindex="0">
+                  <a class='class-link btn' href='/meet/${m.id}'>Join Now</a>
+                </div>
+              </div>
+              
             `
             )}
           </div>
@@ -116,15 +125,29 @@ export var init = async () => {
         `
       )}
     `;
-    document.querySelectorAll(".class-toggle").forEach((e) => {
+    document.querySelectorAll(".class-toggle").forEach(function (e) {
+      var sub = e.parentElement.getElementsByClassName("class-sub")[0];
+      var style = getComputedStyle(sub);
+      sub.h =
+        parseInt(style.height.slice(0, style.height.length - 2)) + 42 + "px";
+      sub.style.maxHeight = sub.h;
       e.onclick = function () {
         var el = this.parentElement.getElementsByClassName("class-sub")[0];
-        el.hidden = !el.hidden;
+        if (el.style.maxHeight == "0px") {
+          el.style.maxHeight = el.h;
+          e.style.boxShadow = "0px 0px 1px 0px #222";
+        } else {
+          el.style.maxHeight = "0px";
+          el.style.boxShadow = "";
+        }
+        var icon = this.getElementsByTagName("i")[0];
+        var transform = icon.style.transform;
+        icon.style.transform = transform == "" ? "rotate(180deg)" : "";
       };
     });
   }
   button.init();
-  document.getElementById("join-meet").onclick = () => {
+  document.getElementById("s-grade").onchange = () => {
     var _class_ = document.getElementById("s-grade").value;
     var all = document.getElementsByClassName("s-label");
     var schoolid;
@@ -133,7 +156,8 @@ export var init = async () => {
         schoolid = all[i].getAttribute("value");
       }
     }
-
+    document.getElementById("meetings").innerHTML =
+      "<h5 style='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)'>Loading</h5>";
     fetch("/allmeetings", {
       method: "post",
       headers: {
@@ -148,13 +172,20 @@ export var init = async () => {
         document.getElementById("meetings").innerHTML = forEach(
           meetings,
           (m) =>
-            `<div class='meet-link'><a href='/meet/${m.id}'>${m.name}</a><div>`
+            ` <div class="mdc-card" style="padding:16px; margin: 5px;">
+                <div class="mdc-card__content">
+                  <h4>${m.name}</h4>
+                </div>
+                <div class="mdc-card__action-button" tabindex="0">
+                  <a class='class-link btn' href='/meet/${m.id}'>Join Now</a>
+                </div>
+              </div>`
         );
+        button.init();
       });
   };
 };
 function createClass() {
-  console.log("hello hi");
   var all = document.getElementsByClassName("s-label");
   var schoolid;
   for (var i = 0; i < all.length; i++) {

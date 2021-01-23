@@ -16,5 +16,6 @@ router.post("/allmeetings", meet.getAllMeetings);
 router.get("/getuser", users.getuser);
 router.get("/gettoken", users.token);
 router.post("/newclass", classes.newclass);
+router.post("/file", meet.uploadFile);
 router.post("/joinclass", classes.joinclass);
 module.exports = router;

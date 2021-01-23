@@ -25,10 +25,11 @@ export var init = async () => {
     ).json()
   ).id;
   var page1 = `
-  <h1 style='color:#444'>${details.name}</h1>
-  <h5 style='color:#444'>for ${details.class}</h5>
-  <button id='join-meet'>join</button>
-  <div id='localvideo'></div>
+  
+  <div id='m_join_cont'>
+    <h1 class="m_join_text">${details.name}</h1>
+    <button id='join-meet'>Join now</button>
+  </div>
   `;
   document.getElementById("main").innerHTML = page1;
   button.init();
@@ -90,42 +91,4 @@ function joinMeeting() {
     }
   });
   document.getElementById("main").innerHTML = ``;
-}
-
-function muteAudio(room) {
-  room.localParticipant.audioTracks.forEach((publication) => {
-    publication.track.disable();
-  });
-}
-function muteVideo(room) {
-  room.localParticipant.videoTracks.forEach((publication) => {
-    publication.track.disable();
-  });
-
-  document.getElementById("localvideo").style.display = "none";
-  document.getElementById("localimg").style.display = "inline-block";
-}
-
-function unmuteAudio(room) {
-  room.localParticipant.audioTracks.forEach((publication) => {
-    publication.track.enable();
-  });
-}
-function unmuteVideo(room) {
-  room.localParticipant.videoTracks.forEach((publication) => {
-    publication.track.enable();
-  });
-  document.getElementById("localvideo").style.display = "inline-block";
-  document.getElementById("localimg").style.display = "none";
-}
-
-function handleTrack(track, id) {
-  track.on("enabled", () => {
-    document.getElementById(id + "_img").style.display = "none";
-    document.getElementById(id + "_vid").style.display = "inline-block";
-  });
-  track.on("disabled", () => {
-    document.getElementById(id + "_img").style.display = "inline-block";
-    document.getElementById(id + "_vid").style.display = "none";
-  });
 }
